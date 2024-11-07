@@ -30,4 +30,4 @@ spec:
       volumes:
         - name: config
           hostPath:
-            path: /workspaces/challenge-sunken-kitchen/config/router-config.json5
+            path: /workspace/config/router-config.json5
