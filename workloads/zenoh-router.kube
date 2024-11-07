@@ -1,0 +1,8 @@
+[Kube]
+Yaml=zenoh-router.yml
+
+[Install]
+WantedBy=default.target
+
+[Unit]
+Wants=kuksa.service
