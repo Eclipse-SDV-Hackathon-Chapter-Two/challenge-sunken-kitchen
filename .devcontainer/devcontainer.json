@@ -1,0 +1,11 @@
+{
+    "name": "autosd",
+    "privileged": true,
+    "image": "quay.io/centos-sig-automotive/autosd:latest",
+    "overrideCommand": false,
+    "mounts": [
+        "source=${localWorkspaceFolder}/workloads,target=/etc/containers/systemd,type=bind"
+    ],
+   "workspaceMount": "source=${localWorkspaceFolder},target=/workspace,type=bind",
+   "workspaceFolder": "/workspace"
+}

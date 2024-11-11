@@ -1,0 +1,33 @@
+---
+apiversion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: zenoh-router
+  name: zenoh-router
+spec:
+  replicas: 1
+  selector:
+    matchlabels:
+      app: zenoh-router
+  template:
+    metadata:
+      labels:
+        app: zenoh-router
+    spec:
+      hostNetwork: true
+      containers:
+        - name: app
+          image: docker.io/eclipse/zenoh:0.11.0
+          imagePullPolicy: IfNotPresent
+          args: ["--config", "/etc/zenoh/router-config.json5"]
+          env:
+            - name: RUST_LOG
+              value: DEBUG
+          volumeMounts:
+            - name: config
+              mountPath: /etc/zenoh/router-config.json5
+      volumes:
+        - name: config
+          hostPath:
+            path: /workspace/config/router-config.json5

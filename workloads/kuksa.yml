@@ -1,0 +1,26 @@
+---
+apiversion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: kuksa
+  name: kuksa
+spec:
+  replicas: 1
+  selector:
+    matchlabels:
+      app: kuksa
+  template:
+    metadata:
+      labels:
+        app: kuksa
+    spec:
+      hostNetwork: true
+      containers:
+        - name: app
+          image: ghcr.io/eclipse-kuksa/kuksa-databroker:0.4.5
+          imagePullPolicy: IfNotPresent
+          args: ["--insecure"]
+          env:
+            - name: KUKSA_DATABROKER_PORT
+              value: "55556"

@@ -1,0 +1,5 @@
+[Kube]
+Yaml=kuksa.yml
+
+[Install]
+WantedBy=default.target
